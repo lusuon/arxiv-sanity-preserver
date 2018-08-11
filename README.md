@@ -34,7 +34,7 @@ $ pip install -r requirements.txt
 
 You will also need [ImageMagick](http://www.imagemagick.org/script/index.php) and [pdftotext](https://poppler.freedesktop.org/), which you can install on Ubuntu as `sudo apt-get install imagemagick poppler-utils`. Bleh, that's a lot of dependencies isn't it.
 
-您还需要[ImageMagick]（http://www.imagemagick.org/script/index.php)和[pdftotext]（https://poppler.freedesktop.org/)，您可以在Ubuntu上安装为 `sudo apt-get install imagemagick poppler-utils`。 
+您还需要[ImageMagick](http://www.imagemagick.org/script/index.php)和[pdftotext]（https://poppler.freedesktop.org/)，您可以在Ubuntu上安装为 `sudo apt-get install imagemagick poppler-utils`。 
 
 ### Processing pipeline 处理pineline
 
@@ -115,4 +115,4 @@ python serve.py --prod --port 80
 
 The server will load the new files and begin hosting the site. Note that on some systems you can't use port 80 without `sudo`. Your two options are to use `iptables` to reroute ports or you can use [setcap](http://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-1024-on-l) to elavate the permissions of your `python` interpreter that runs `serve.py`. In this case I'd recommend careful permissions and maybe virtualenv, etc.
 
-服务器将加载新文件并开始托管该站点。 请注意，在某些系统上，如果没有“sudo”，则无法使用端口80。 有两个选择：使用`iptables`重新路由端口，或者你可以使用[setcap]（http://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-1024-on-l)以获得运行`serve.py`的`python`解释器的权限。 在这种情况下，我建议谨慎的权限，也许virtualenv等。
+服务器将加载新文件并开始托管该站点。 请注意，在某些系统上，如果没有“sudo”，则无法使用端口80。 有两个选择：使用`iptables`重新路由端口，或者你可以使用[setcap](http://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-1024-on-l)以获得运行`serve.py`的`python`解释器的权限。 在这种情况下，我建议谨慎的权限，也许virtualenv等。
