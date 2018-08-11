@@ -24,7 +24,7 @@ There are two large parts of the code:有两大部分的代码：
 
 Several: You will need numpy, feedparser (to process xml files), scikit learn (for tfidf vectorizer, training of SVM), flask (for serving the results), flask_limiter, and tornado (if you want to run the flask server in production). Also dateutil, and scipy. And sqlite3 for database (accounts, library support, etc.). Most of these are easy to get through `pip`, e.g.:
 
-一些依赖：您将需要numpy，feedparser（处理xml文件），scikit learn（用于tfidf矢量化，SVM训练），flask（用于提供结果），flask_limiter和tornado（如果你想在生产中运行烧瓶服务器））。 还有dateutil和scipy。 和sqlite3用于数据库（帐户，库支持等）。 其中大多数都很容易通过`pip`安装，例如：
+一些依赖：您将需要numpy，feedparser（处理xml文件），scikit learn（用于tfidf矢量化，SVM训练），flask（用于提供结果），flask_limiter和tornado（如果你想在生产中运行flask服务器）。 还有dateutil和scipy。 和sqlite3用于数据库（帐户，库支持等）。 其中大多数都很容易通过`pip`安装，例如：
 
 ```bash
 $ virtualenv env                # optional: use virtualenv
@@ -34,7 +34,7 @@ $ pip install -r requirements.txt
 
 You will also need [ImageMagick](http://www.imagemagick.org/script/index.php) and [pdftotext](https://poppler.freedesktop.org/), which you can install on Ubuntu as `sudo apt-get install imagemagick poppler-utils`. Bleh, that's a lot of dependencies isn't it.
 
-您还需要[ImageMagick](http://www.imagemagick.org/script/index.php)和[pdftotext]（https://poppler.freedesktop.org/)，您可以在Ubuntu上安装为 `sudo apt-get install imagemagick poppler-utils`。 
+您还需要[ImageMagick](http://www.imagemagick.org/script/index.php)和[pdftotext](https://poppler.freedesktop.org/)，您可以在Ubuntu上安装为 `sudo apt-get install imagemagick poppler-utils`。 
 
 ### Processing pipeline 处理pineline
 
