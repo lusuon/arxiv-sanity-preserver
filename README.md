@@ -3,7 +3,8 @@
 
 This project is a web interface that attempts to tame the overwhelming flood of papers on Arxiv. It allows researchers to keep track of recent papers, search for papers, sort papers by similarity to any paper, see recent popular papers, to add papers to a personal library, and to get personalized recommendations of (new or old) Arxiv papers. This code is currently running live at [www.arxiv-sanity.com/](http://www.arxiv-sanity.com/), where it's serving 25,000+ Arxiv papers from Machine Learning (cs.[CV|AI|CL|LG|NE]/stat.ML) over the last ~3 years. With this code base you could replicate the website to any of your favorite subsets of Arxiv by simply changing the categories in `fetch_papers.py`.
 
-这个项目是一个试图揽取大量Arxiv上的论文的网络界面。 它允许研究人员跟踪最近的论文，搜索论文，通过与任何论文的相似性对论文进行分类，查看最近的热门论文，将论文添加到个人库，以及获得（新的或旧的）Arxiv论文的个性化推荐。 此代码目前正在[www.arxiv-sanity.com/](http://www.arxiv-sanity.com/）上运行，它通过机器学习中提供过去3年内25,000多份Arxiv论文（cs.[CV | AI | CL | LG | NE] /stat.ML）。 使用此代码库，您只需更改`fetch_papers.py`中的类别，即可将网站复制到您最喜欢的Arxiv子集中。
+这个项目是一个试图揽取大量Arxiv上的论文的网络界面。 它允许研究人员跟踪最近的论文，搜索论文，通过与任何论文的相似性对论文进行分类，查看最近的热门论文，将论文添加到个人库，以及获得（新的或旧的）Arxiv论文的个性化推荐。 此代码目前正在[www.arxiv-sanity.com/](http://www.arxiv-sanity.com/)
+上运行，它通过机器学习中提供过去3年内25,000多份Arxiv论文（cs.[CV | AI | CL | LG | NE] /stat.ML）。 使用此代码库，您只需更改`fetch_papers.py`中的类别，即可将网站复制到您最喜欢的Arxiv子集中。
 
 ![user interface](https://raw.github.com/karpathy/arxiv-sanity-preserver/master/ui.jpeg)
 
@@ -33,7 +34,7 @@ $ pip install -r requirements.txt
 
 You will also need [ImageMagick](http://www.imagemagick.org/script/index.php) and [pdftotext](https://poppler.freedesktop.org/), which you can install on Ubuntu as `sudo apt-get install imagemagick poppler-utils`. Bleh, that's a lot of dependencies isn't it.
 
-您还需要[ImageMagick]（http://www.imagemagick.org/script/index.php）和[pdftotext]（https://poppler.freedesktop.org/），您可以在Ubuntu上安装为 `sudo apt-get install imagemagick poppler-utils`。 
+您还需要[ImageMagick]（http://www.imagemagick.org/script/index.php)和[pdftotext]（https://poppler.freedesktop.org/)，您可以在Ubuntu上安装为 `sudo apt-get install imagemagick poppler-utils`。 
 
 ### Processing pipeline 处理pineline
 
