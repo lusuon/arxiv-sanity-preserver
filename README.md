@@ -58,12 +58,19 @@ I have a simple shell script that runs these commands one by one, and every day 
 处理pineline要求您运行一系列脚本，在此阶段我真的鼓励您手动检查每个脚本，因为它们可能包含您可能想要更改的各种内联设置。按顺序，处理pineline是：
 
 1.运行`fetch_papers.py`来查询arxiv API并创建一个包含每篇论文所有信息的文件`db.p`。您可以在此脚本中修改**查询**，指示您要使用的arxiv的哪些部分。请注意，如果你试图拉取太多论文，arxiv将开始限制你。您可能需要多次运行该脚本，当您上次被arxiv中断时，我建议使用arg` --start-index`，中断处继续重新启动。
+
 2.运行`download_pdfs.py`，它遍历已解析的pickle中的所有文件，并将文件下载到文件夹`pdf`中。
+
 3.运行`parse_pdf_to_text.py`将所有文本从pdfs导出到`txt`中的文件
+
 4.运行`thumb_pdf.py`将所有pdf的缩略图导出到`thumb`
+
 5.运行`analyze.py`，根据bigrams计算所有文档的tfidf向量。保存`tfidf.p`，`tfidf_meta.p`和`sim_dict.p` pickle文件。
+
 6.运行`buildsvm.py`为所有用户（如果有的话）训练SVM，导出一个pickle`user_sim.p`
+
 7.运行`make_cache.py`进行各种预处理，以便服务器启动更快（并确保运行`sqlite3 as.db <schema.sql`，如果这是你第一次启动arxiv-sanity，它初始化一个空的数据库）。
+
 8.使用`serve.py`运行flask服务器。访问localhost：5000并享受论文！
 
 您也可以选择在屏幕会话中运行`twitter_daemon.py`，它使用您的Twitter API凭据（存储在`twitter.txt`中）定期查询Twitter，查找数据库中的论文，并将结果写入pickle文件`twitter.p`。
@@ -108,4 +115,4 @@ python serve.py --prod --port 80
 
 The server will load the new files and begin hosting the site. Note that on some systems you can't use port 80 without `sudo`. Your two options are to use `iptables` to reroute ports or you can use [setcap](http://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-1024-on-l) to elavate the permissions of your `python` interpreter that runs `serve.py`. In this case I'd recommend careful permissions and maybe virtualenv, etc.
 
-服务器将加载新文件并开始托管该站点。 请注意，在某些系统上，如果没有“sudo”，则无法使用端口80。 有两个选择：使用`iptables`重新路由端口，或者你可以使用[setcap]（http://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to- bind-to-privileged-ports-1024-on-l）以获得运行`serve.py`的`python`解释器的权限。 在这种情况下，我建议谨慎的权限，也许virtualenv等。
+服务器将加载新文件并开始托管该站点。 请注意，在某些系统上，如果没有“sudo”，则无法使用端口80。 有两个选择：使用`iptables`重新路由端口，或者你可以使用[setcap]（http://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-1024-on-l)以获得运行`serve.py`的`python`解释器的权限。 在这种情况下，我建议谨慎的权限，也许virtualenv等。
