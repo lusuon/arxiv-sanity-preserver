@@ -7,8 +7,11 @@ import os
 import time
 import shutil
 from subprocess import Popen
-
 from utils import Config
+import io
+import sys
+
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf-8')
 
 # make sure imagemagick is installed
 if not shutil.which('convert'): # shutil.which needs Python 3.3+
@@ -16,15 +19,16 @@ if not shutil.which('convert'): # shutil.which needs Python 3.3+
   sys.exit()
 
 # create if necessary the directories we're using for processing and output
+#拼接路径
 pdf_dir = os.path.join('data', 'pdf')
 if not os.path.exists(Config.thumbs_dir): os.makedirs(Config.thumbs_dir)
 if not os.path.exists(Config.tmp_dir): os.makedirs(Config.tmp_dir)
 
 # fetch all pdf filenames in the pdf directory
 files_in_pdf_dir = os.listdir(pdf_dir)
-pdf_files = [x for x in files_in_pdf_dir if x.endswith('.pdf')] # filter to just pdfs, just in case
+pdf_files = [x for x in files_in_pdf_dir if x.endswith('.pdf')] # filter to just pdfs, just in case（即pdf过滤器）
 
-# iterate over all pdf files and create the thumbnails
+# iterate over all pdf files and create the thumbnails，函数enuerate（）使pdf_files可遍历
 for i,p in enumerate(pdf_files):
   pdf_path = os.path.join(pdf_dir, p)
   thumb_path = os.path.join(Config.thumbs_dir, p + '.jpg')
@@ -34,6 +38,7 @@ for i,p in enumerate(pdf_files):
     continue
 
   print("%d/%d processing %s" % (i, len(pdf_files), p))
+
 
   # take first 8 pages of the pdf ([0-7]), since 9th page are references
   # tile them horizontally, use JPEG compression 80, trim the borders for each image
@@ -60,7 +65,9 @@ for i,p in enumerate(pdf_files):
 
   # spawn async. convert can unfortunately enter an infinite loop, have to handle this.
   # this command will generate 8 independent images thumb-0.png ... thumb-7.png of the thumbnails
+  print('convert', '%s[0-7]' % (pdf_path, ), '-thumbnail', 'x156', os.path.join(Config.tmp_dir, 'thumb.png'))
   pp = Popen(['convert', '%s[0-7]' % (pdf_path, ), '-thumbnail', 'x156', os.path.join(Config.tmp_dir, 'thumb.png')])
+  #print('ok?')
   t0 = time.time()
   while time.time() - t0 < 20: # give it 15 seconds deadline
     ret = pp.poll()

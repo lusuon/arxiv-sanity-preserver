@@ -11,11 +11,14 @@ timeout_secs = 10 # after this many seconds we give up on a paper
 if not os.path.exists(Config.pdf_dir): os.makedirs(Config.pdf_dir)
 have = set(os.listdir(Config.pdf_dir)) # get list of all pdfs we already have
 
+#--------------------------载入pickle Step 1--------------------------
 numok = 0
 numtot = 0
 db = pickle.load(open(Config.db_path, 'rb'))
+
+#--------------------------遍历db内pdf的url，并尝试获取 Step 2--------------------------
 for pid,j in db.items():
-  
+  #初始化变量
   pdfs = [x['href'] for x in j['links'] if x['type'] == 'application/pdf']
   assert len(pdfs) == 1
   pdf_url = pdfs[0] + '.pdf'

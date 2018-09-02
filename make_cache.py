@@ -1,4 +1,5 @@
 """
+加速服务器启动的缓存
 computes various cache things on top of db.py so that the server
 (running from serve.py) can start up and serve faster when restarted.
 

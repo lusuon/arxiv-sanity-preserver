@@ -81,6 +81,8 @@ def open_atomic(filepath, *args, **kwargs):
             if fsync:
                 f.flush()
                 os.fsync(file.fileno())
+        if os.path.exists(filepath): #改动：尝试通过删除源文件以达到覆盖覆盖
+            os.remove(filepath)  #改动：尝试通过删除源文件以达到覆盖覆盖
         os.rename(tmppath, filepath)
 
 def safe_pickle_dump(obj, fname):
